@@ -16,6 +16,15 @@ if sys.argv[-1] == 'publish':
 
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
+package_dir = {
+    '{{ cookiecutter.repo_name }}': '{{ cookiecutter.repo_name }}'
+}
+project_url = (
+    'https://github.com/%s/%s' % (
+        '{{ cookiecutter.github_username }}',
+        '{{ cookiecutter.repo_name }}'
+    )
+)
 
 setup(
     name='{{ cookiecutter.repo_name }}',
@@ -24,15 +33,15 @@ setup(
     long_description=readme + '\n\n' + history,
     author='{{ cookiecutter.full_name }}',
     author_email='{{ cookiecutter.email }}',
-    url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}',
+    url=project_url,
     packages=[
         '{{ cookiecutter.repo_name }}',
     ],
-    package_dir={'{{ cookiecutter.repo_name }}': '{{ cookiecutter.repo_name }}'},
+    package_dir=package_dir,
     include_package_data=True,
     install_requires=[
     ],
-    license="BSD",
+    license="MIT",
     zip_safe=False,
     keywords='{{ cookiecutter.repo_name }}',
     classifiers=[
